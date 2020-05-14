@@ -7,7 +7,7 @@ let timerPlace = document.querySelector('#timer');
 let questionOverview = document.querySelector('.questionSpace')
 let minusOne = document.querySelector(".timerMinusOne")
 let highScorePlace = document.querySelector("#highScorePlace")
-let lastWinner = JSON.parse(localStorage.getItem("highScore"))
+let lastWinner = JSON.parse(localStorage.getItem("lastWinner"))
 let trueAnswer;
 let score = 0;
 let counter = 30;
@@ -15,24 +15,24 @@ let x = 0;
 let userchoice;
 
 
+
+
 function checkLocalScore () {
     if (lastWinner !== null) {
         highScorePlace.append("Initials: " + lastWinner.initials + " ")
         highScorePlace.append("Score: " + lastWinner.newHighScore)
-    
-    
-    } if (lastWinner.highScore === null)  {
+    } if (lastWinner === null)  {
         let highScore = {
             initials:'',
-            newHighScore:0
+            newHighScore: 0
         }
-    
-        highScore.initials = ''
-        highScore.newHighScore = 0
+        localStorage.setItem("lastWinner", JSON.stringify(highScore));
+        location.reload()
     }
 }
 
 checkLocalScore()
+
 
 
 
@@ -116,7 +116,6 @@ function playGame() {
 
 function userChoice() {
     let userChoice = event.target.value
-    if (x <= 10) { //when you add +1 here it solves the giving the final question away 
         if(trueAnswer === userChoice) {
             score++;
             scorePlace.innerText = "Your Score: " + score
@@ -132,16 +131,13 @@ function userChoice() {
                 minusOne.setAttribute('class', 'timerMinusOne');
              }, 300);
         }
-    } else {
-        gameOver()
     }
-}
 
 function nextQuestion() {
     let index = x
-
+if (x < 10) {
     let selectedquestion = questions[index]
-    let questionAnwser = selectedquestion.answer //but it breaks here
+    let questionAnwser = selectedquestion.answer 
 
     trueAnswer = questionAnwser
 
@@ -158,37 +154,14 @@ function nextQuestion() {
     optionsSpace.append(newBtn)
     };
     x++
-    console.log(x)
+}  else {
+    gameOver()
+}
 
 }
 
 function gameOver (){
     clearInterval(timer)
-
-    function compareScore (counter) {
-        console.log(score)
-        if (score > lastWinner.newHighScore) {
-
-            let initialsPrompt = prompt("Your final score was: " + score + " Enter your initials for High Score!")
-
-        let highScore = {
-            initials:'',
-            newHighScore: 0
-        }
-
-            highScore.initials = initialsPrompt
-            highScore.newHighScore = score
-            localStorage.setItem("highScore", JSON.stringify(highScore));
-
-            highScorePlace.innerText = ''
-            location.reload()
-            
-        } if (score < lastWinner.newHighScore) {
-            questionOverview.innerHTML = ''
-            questionOverview.innerHTML = "<div> Game Over! </div> <div>You're time bonus was: " + counter + "</div> <div> Your score is: " + score + "</div> <button onclick='playNewGame()' class='playBtn'> Play Again? </button>"
-        }
-    }
-
     if (counter > 0) {
         scorePlace.innerText = "Your Score: " + score
         counter = counter*.5
@@ -206,5 +179,27 @@ function playNewGame() {
     location.reload()
 }
 
+function compareScore (counter) {
+    if (score > lastWinner.newHighScore) {
+
+        let initialsPrompt = prompt("Your final score was: " + score + " Enter your initials for High Score!").trim()
+
+        let highScore = {
+            initials:'',
+            newHighScore: 0
+        }
+
+        highScore.initials = initialsPrompt
+        highScore.newHighScore = score
+        localStorage.setItem("lastWinner", JSON.stringify(highScore));
+
+        highScorePlace.innerText = ''
+        location.reload()
+        
+    } if (score < lastWinner.newHighScore) {
+        questionOverview.innerHTML = ''
+        questionOverview.innerHTML = "<div> Game Over! </div> <div>You're time bonus was: " + counter + "</div> <div> Your score is: " + score + "</div> <button onclick='playNewGame()' class='playBtn'> Play Again? </button>"
+    }
+}
 
 
