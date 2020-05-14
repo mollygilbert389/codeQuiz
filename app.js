@@ -14,20 +14,26 @@ let counter = 30;
 let x = 0;
 let userchoice;
 
-let highScore = {
-    initials:'',
-    newHighScore:''
+
+function checkLocalScore () {
+    if (lastWinner !== null) {
+        highScorePlace.append("Initials: " + lastWinner.initials + " ")
+        highScorePlace.append("Score: " + lastWinner.newHighScore)
+    
+    
+    } if (lastWinner.highScore === null)  {
+        let highScore = {
+            initials:'',
+            newHighScore:0
+        }
+    
+        highScore.initials = ''
+        highScore.newHighScore = 0
+    }
 }
 
-if (lastWinner !== null) {
-    localStorage.setItem("highScore", JSON.stringify(highScore));
+checkLocalScore()
 
-    highScorePlace.append("Initials: " + lastWinner.initials + " ")
-    highScorePlace.append("Score: " + lastWinner.newHighScore)
-} else  {
-    highScore.initials = ''
-    highScore.newHighScore = ''
-}
 
 
 const questions = [
@@ -159,12 +165,16 @@ function nextQuestion() {
 function gameOver (){
     clearInterval(timer)
 
-
-
     function compareScore (counter) {
+        console.log(score)
         if (score > lastWinner.newHighScore) {
 
             let initialsPrompt = prompt("Your final score was: " + score + " Enter your initials for High Score!")
+
+        let highScore = {
+            initials:'',
+            newHighScore: 0
+        }
 
             highScore.initials = initialsPrompt
             highScore.newHighScore = score
@@ -188,7 +198,7 @@ function gameOver (){
     } else {
         counter = 0
         scorePlace.innerText = "Your Score: " + score
-        compareScore()
+        compareScore(counter)
         }
     }
 
