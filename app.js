@@ -182,7 +182,8 @@ function playNewGame() {
 function compareScore (counter) {
     if (score > lastWinner.newHighScore) {
 
-        let initialsPrompt = prompt("Your final score was: " + score + " Enter your initials for High Score!").trim()
+        let initialsPrompt = prompt("You beat the high score! You have a time bonus of: " + counter + 
+        " Your final score was: " + score + " Enter your initials for the high score board!").trim()
 
         let highScore = {
             initials:'',
