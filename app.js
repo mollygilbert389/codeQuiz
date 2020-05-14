@@ -14,28 +14,6 @@ let counter = 30;
 let x = 0;
 let userchoice;
 
-
-
-
-function checkLocalScore () {
-    if (lastWinner !== null) {
-        highScorePlace.append("Initials: " + lastWinner.initials + " ")
-        highScorePlace.append("Score: " + lastWinner.newHighScore)
-    } if (lastWinner === null)  {
-        let highScore = {
-            initials:'',
-            newHighScore: 0
-        }
-        localStorage.setItem("lastWinner", JSON.stringify(highScore));
-        location.reload()
-    }
-}
-
-checkLocalScore()
-
-
-
-
 const questions = [
     {
         question: "Where is the best place to put your script tag for a JS file you created?",
@@ -95,23 +73,34 @@ const questions = [
     
 ];
 
+function checkLocalScore () {
+    if (lastWinner !== null) {
+        highScorePlace.append("Initials: " + lastWinner.initials + " ")
+        highScorePlace.append("Score: " + lastWinner.newHighScore)
+    } if (lastWinner === null)  {
+        let highScore = {
+            initials:'',
+            newHighScore: 0
+        }
+        localStorage.setItem("lastWinner", JSON.stringify(highScore));
+        location.reload() //incognito?
+    }
+}
+
 function playGame() {
     intro = intro.style.display = 'none'
 
     timer = setInterval(function(){
         counter--;
         timerPlace.innerHTML = `Time: ${counter} seconds left`
-        if (counter > 0) {
-        } else {
+        if (counter <= 0) {
             gameOver()
-        }
-        },1000);
+        }}, 1000);
 
     questions.sort(function() {
         return .5 - Math.random();
     });
     nextQuestion()
-    
 };
 
 function userChoice() {
@@ -134,30 +123,28 @@ function userChoice() {
     }
 
 function nextQuestion() {
-    let index = x
-if (x < 10) {
-    let selectedquestion = questions[index]
-    let questionAnwser = selectedquestion.answer 
+    if (x < 10) {
+        let selectedquestion = questions[x]
+        let questionAnwser = selectedquestion.answer 
 
-    trueAnswer = questionAnwser
+        trueAnswer = questionAnwser
 
-    questionSpace.append(selectedquestion.question)
+        questionSpace.append(selectedquestion.question)
 
-    let quesOptions = selectedquestion.options
+        let quesOptions = selectedquestion.options
 
-    for (i=0; i < quesOptions.length; i++) {
-    let newBtn = document.createElement('button')
-    newBtn.className = 'quesButtons'
-    newBtn.innerText = quesOptions[i]
-    newBtn.value = quesOptions[i]
-    newBtn.setAttribute('onClick', 'userChoice()')
-    optionsSpace.append(newBtn)
-    };
-    x++
-}  else {
-    gameOver()
-}
-
+        for (i=0; i < quesOptions.length; i++) {
+        let newBtn = document.createElement('button')
+        newBtn.className = 'quesButtons'
+        newBtn.innerText = quesOptions[i]
+        newBtn.value = quesOptions[i]
+        newBtn.setAttribute('onClick', 'userChoice()')
+        optionsSpace.append(newBtn)
+        };
+        x++
+        }  else {
+            gameOver()
+        }
 }
 
 function gameOver (){
@@ -174,10 +161,6 @@ function gameOver (){
         compareScore(counter)
         }
     }
-
-function playNewGame() {
-    location.reload()
-}
 
 function compareScore (counter) {
     if (score > lastWinner.newHighScore) {
@@ -203,4 +186,11 @@ function compareScore (counter) {
     }
 }
 
+function playNewGame() {
+    location.reload()
+}
 
+
+
+////////////////// Logic Outside of onClick
+checkLocalScore()
