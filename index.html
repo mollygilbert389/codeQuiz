@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Code Quiz</title>
+</head>
+<body>
+    <div class="scoreSpace">
+        <p id="score">Score: </p>
+    </div>
+
+    <div class="timerSpace">
+        <p id="timer"> Time: 30 seconds left </p>
+    </div>
+
+    <div class="container">
+        <div class="intro">
+            <h1>I am a JavaScript code Quiz!</h1>
+            <p>Click the play button to start!</p>
+            <button class="playBtn" onClick="playGame()">Play!</button>
+        </div>
+        
+        <div class="questionSpace">
+            <div class="question">
+
+            </div>
+
+            <div class="options">
+
+            </div>
+
+            <div class="answer">
+
+            </div>
+        </div>
+
+        <div class="timerMinusOne">
+            -1 Second!
+        </div>
+    </div>
+
+    <div class="highScoreContainer">
+        <div>High Score:</div>
+        <div id="highScorePlace"></div>
+    </div>
+    
+</body>
+<script src="app.js"></script>
+</html>

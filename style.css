@@ -1,0 +1,68 @@
+* {
+    font-family: 'Jost', sans-serif;
+}
+
+.container {
+   text-align: center;
+}
+
+.scoreSpace {
+    text-align: center;
+    margin-left: 35%;
+    margin-right: 35%;
+    padding-bottom: 10px;
+    border: 1px solid lightblue;
+}
+
+.timerSpace {
+    z-index: -1;
+    top:0;
+    position: absolute;
+}
+
+.options{
+    text-align: center;
+}
+
+.scoreSpace > p{
+    height: 10px;
+}
+
+.quesButtons {
+    align-items: center;
+    margin: 5px;
+}
+
+.timerMinusOne {
+    display: none;
+}
+
+.show {
+    color: red;
+}
+
+.questionSpace {
+    margin-top: 30px;
+}
+
+.intro {
+    margin-top: 30px;
+}
+
+button {
+    background-color: black;
+    color: white;
+    height: 35px;
+    border-radius: 8px;
+    border: none;
+}
+
+.playBtn {
+    margin-top: 10px;
+}
+
+.highScoreContainer {
+    position: absolute;
+    right: 5%;
+    top: 20px;
+}
