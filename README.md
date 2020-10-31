@@ -2,7 +2,6 @@
 
 ## Table of Contents
   - [Description](#description)
-  - [Installation](#installation)
   - [Usage](#usage)
   - [Questions](#questions)
 
@@ -10,7 +9,7 @@
 This is a javascript quiz app made using vanilla javascript and utilizes localStorage. This app also tracks time and score. If a user answers incorrectly the timer decrements. Should they answer correctly their score will increase. Should the user finish the quiz early they will get a time bonus added to their score.
 
 ## Deployed Application
-[Deployed Applicaton](#mollygilbert389.github.io/codequiz/)
+[Deployed Applicaton](https://mollygilbert389.github.io/codeQuiz/)
   
 ## Usage
 1. Clone it down. 
