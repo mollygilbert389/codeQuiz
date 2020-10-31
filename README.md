@@ -2,6 +2,7 @@
 
 ## Table of Contents
   - [Description](#description)
+  - [Deployed Application](#Deployed Application)
   - [Usage](#usage)
   - [Questions](#questions)
 
@@ -10,6 +11,9 @@ This is a javascript quiz app made using vanilla javascript and utilizes localSt
 
 ## Deployed Application
 [Deployed Applicaton](https://mollygilbert389.github.io/codeQuiz/)
+
+![codeQuiz](https://user-images.githubusercontent.com/29104770/97786649-00022500-1b7b-11eb-95f1-e1361a17e9dd.gif)
+
   
 ## Usage
 1. Clone it down. 
