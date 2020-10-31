@@ -1,3 +1,22 @@
-<h1>Code Quiz</h1>
+# Code Quiz
 
-This is a javascript quiz app made using vanilla javascript and utilizes local storage. This app also tracks time and score. If a user anwsers incorrectly the timer decrements. Should they anwser correctly their score will increse. Should the user finish the quiz early they will get a time bonus added to their score. 
+## Table of Contents
+  - [Description](#description)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Questions](#questions)
+
+## Description
+This is a javascript quiz app made using vanilla javascript and utilizes localStorage. This app also tracks time and score. If a user answers incorrectly the timer decrements. Should they answer correctly their score will increase. Should the user finish the quiz early they will get a time bonus added to their score.
+
+## Deployed Application
+[Deployed Applicaton](#mollygilbert389.github.io/codequiz/)
+  
+## Usage
+1. Clone it down. 
+2. Can be opened using live servere or default browser
+
+## Questions
+Please see my github: [Gihub Profile](https://github.com/mollygilberet389)
+<br>You can ask me questions here: msgilbrt389@gmail.com
+
